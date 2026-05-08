@@ -1,18 +1,22 @@
 class C2 < Formula
   desc "TUI command-and-control app for LLMs with text and voice interaction"
   homepage "https://github.com/jrniemiec/c2"
-  url "https://github.com/jrniemiec/c2/archive/refs/tags/v0.8.0.tar.gz"
-  sha256 "242abe7d8e454f5c8ed6ea89f91fbc497a44676f5f1c4077bb9d301e0334ea24"
   license "MIT"
+  version "0.8.2"
 
-  depends_on "go" => :build
+  on_arm do
+    url "https://github.com/jrniemiec/c2/releases/download/v#{version}/c2-v#{version}-darwin-arm64.tar.gz"
+    sha256 "50a894b274945329e2f16185ee1c5d191dc39a6d78597c271271b6a711afa082"
+  end
+
   depends_on "portaudio"
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X main.version=#{version}"), "."
+    bin.install "bin/c2"
+    lib.install Dir["lib/*.dylib"]
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/c2 --version 2>&1", 1)
+    assert_match version.to_s, shell_output("#{bin}/c2 --version")
   end
 end
