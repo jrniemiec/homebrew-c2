@@ -2,11 +2,11 @@ class C2 < Formula
   desc "TUI command-and-control app for LLMs with text and voice interaction"
   homepage "https://github.com/jrniemiec/c2"
   license "MIT"
-  version "0.8.6"
+  version "0.8.7"
 
   on_arm do
     url "https://github.com/jrniemiec/c2/releases/download/v#{version}/c2-v#{version}-darwin-arm64.tar.gz"
-    sha256 "20dabb402ea6a3d82a7ddb41b597ff08e4ea9f2c80f940050f3a4efe08b5c05e"
+    sha256 "c0b18bf4c9d5a30571a9ab98af921279bd58b3a8ba38335d50620331ba7d4e58"
   end
 
   depends_on "portaudio"
